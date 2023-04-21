@@ -1,0 +1,17 @@
+#
+---
+- name: localhost
+  hosts: localhost
+  become: true
+  tasks:
+
+  - name: Log bestanden weghalen van de AWS Cloudshirt website
+    cron:
+      name: Log bestanden weghalen van de AWS Cloudshirt website
+      minute: "0"
+      hour: "0"
+      day: "*"
+      month: "*"
+      weekday: "*"
+      job: journalctl -u cloudshirt.service >> /mnt/efs/log
+      state: present
